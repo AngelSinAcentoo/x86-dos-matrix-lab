@@ -1,0 +1,4 @@
+*.ASM text eol=crlf
+*.INC text eol=crlf
+*.BAT text eol=crlf
+*.md text eol=lf

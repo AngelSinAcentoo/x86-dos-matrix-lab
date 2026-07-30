@@ -1,0 +1,22 @@
+# Salidas de Turbo Assembler / Turbo Linker
+*.OBJ
+*.EXE
+*.COM
+*.MAP
+*.LST
+*.LIB
+*.BAK
+*.TD
+
+# Capturas y archivos temporales de DOSBox
+capture/
+*.wav
+*.avi
+*.LOG
+CAPTURE.CONF
+
+# Editores y sistema operativo
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
