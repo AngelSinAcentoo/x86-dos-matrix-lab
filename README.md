@@ -1,124 +1,110 @@
 # x86 DOS Matrix Lab
 
-Calculadora interactiva de matrices 4×4 escrita en ensamblador x86 de 16 bits
-para DOS. El proyecto usa Turbo Assembler, interrupciones de BIOS/DOS, macros,
-procedimientos públicos y el modelo de memoria `small`.
+An interactive 4x4 matrix calculator written in 16-bit x86 assembly for DOS. The project uses Turbo Assembler, BIOS and DOS interrupts, macros, public procedures, and the `small` memory model.
 
-> **English summary:** An interactive 4×4 matrix calculator written in
-> 16-bit x86 assembly for DOS. It demonstrates modular TASM code, BIOS/DOS
-> interrupts, keyboard handling, numeric conversion and matrix algorithms.
+## Demo
 
-## Demostración
+![Matrix calculator main menu](docs/media/menu.png)
 
-![Menú principal de la calculadora](docs/media/menu.png)
+![Operations demo](docs/media/demo.gif)
 
-![Demostración de operaciones](docs/media/demo.gif)
+## Features
 
-## Funciones
+- Addition of two matrices
+- Matrix transposition
+- Matrix multiplication
+- Sum of the main diagonal and all elements
+- Column sums
+- Row sums
+- A real-time clock using DOS interrupt `21h`
 
-- Suma de dos matrices.
-- Matriz transpuesta.
-- Multiplicación de matrices.
-- Suma de la diagonal principal y de todos los elementos.
-- Suma por columnas.
-- Suma por renglones.
-- Reloj en tiempo real mediante la interrupción `21h`.
+## Technologies and concepts
 
-## Tecnologías y conceptos
+- Intel 80286 in 16-bit real mode
+- Turbo Assembler 4.1 and Turbo Linker
+- BIOS interrupt `10h` and DOS interrupt `21h`
+- Modular organization with macros, procedures, and external symbols
+- Manual stack, register, array, and decimal-to-ASCII handling
 
-- Intel 80286, modo real de 16 bits.
-- Turbo Assembler 4.1 y Turbo Linker.
-- Interrupciones BIOS `10h` y DOS `21h`.
-- Organización modular con macros, procedimientos y símbolos externos.
-- Manejo manual de pila, registros, arreglos y conversión decimal/ASCII.
+## Build and run
 
-## Compilar y ejecutar
+Requirements:
 
-Requisitos:
+- DOSBox 0.74-3 or a compatible emulator
+- Legally obtained copies of `TASM.EXE` and `TLINK.EXE`. These tools are not distributed in the repository
 
-- DOSBox 0.74-3 o compatible.
-- Turbo Assembler (`TASM.EXE`) y Turbo Linker (`TLINK.EXE`) obtenidos
-  legalmente. Estas herramientas no se distribuyen en el repositorio.
-
-Monta el repositorio como unidad `C:` y la carpeta de TASM como `T:`:
+Mount the repository as drive `C:` and the TASM directory as drive `T:`:
 
 ```dos
-mount c C:\ruta\x86-dos-matrix-lab
-mount t C:\ruta\TASM
+mount c C:\path\to\x86-dos-matrix-lab
+mount t C:\path\to\TASM
 set PATH=%PATH%;T:\
 c:
 BUILD.BAT
 RUN.BAT
 ```
 
-`BUILD.BAT` ensambla ambos módulos y los enlaza directamente. Los archivos
-generados quedan en `src/` y están excluidos de Git.
+`BUILD.BAT` assembles both modules and links them. Generated files remain under `src/` and are excluded from Git.
 
-## Uso
+## Usage
 
-El menú responde a las teclas `A`–`F`; `Esc` regresa o sale según la pantalla.
-Cada matriz se introduce como **16 valores entre 0 y 9 separados por comas**:
+The menu uses keys `A` through `F`. `Esc` returns to the previous screen or exits, depending on the current view.
+
+Each matrix is entered as 16 values from 0 to 9 separated by commas:
 
 ```text
 1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6
 ```
 
-Los valores se interpretan por renglones. La restricción `0–9` mantiene los
-resultados dentro de los formatos usados por la interfaz:
+Values are read row by row. The 0 to 9 restriction keeps results within the interface formats:
 
-- valores y sumas parciales: dos dígitos;
-- multiplicación y suma total: tres dígitos.
+- Values and partial sums use two digits.
+- Products and the total sum use three digits.
 
-## Organización
+## Repository structure
 
 ```text
 .
 ├── src/
-│   ├── PROYECTO.ASM   # menú, interfaz y flujo principal
-│   ├── PROCED.ASM     # algoritmos y conversión de datos
-│   └── MACROS.INC     # macros de llamada y E/S
-├── exercises/         # prácticas académicas complementarias
-├── tests/             # casos de prueba reproducibles
+│   ├── PROYECTO.ASM   # menu, interface, and main flow
+│   ├── PROCED.ASM     # algorithms and data conversion
+│   └── MACROS.INC     # calling and input/output macros
+├── exercises/         # complementary academic exercises
+├── tests/             # reproducible test cases
 ├── BUILD.BAT
 ├── TEST.BAT
 ├── RUN.BAT
 └── CLEAN.BAT
 ```
 
-## Correcciones de la versión publicada
+## Corrections in the portfolio version
 
-La versión de portafolio conserva el diseño original, con correcciones
-verificables:
+The public version preserves the original design with these verifiable corrections:
 
-- escritura de un byte por elemento durante la lectura;
-- multiplicación completa 4×4 con resultados de palabra sin solapamiento;
-- conversión de productos de hasta tres dígitos;
-- reinicio de acumuladores al repetir operaciones;
-- impresión independiente de resultados escalares.
+- One byte is written per element during matrix input.
+- Matrix multiplication covers the complete 4x4 result without overlapping words.
+- Product conversion supports up to three digits.
+- Accumulators are reset before repeated operations.
+- Scalar results are printed independently.
 
-## Pruebas
+## Tests
 
-`TEST.BAT` compila el proyecto y un arnés escrito también en ensamblador.
-El arnés llama los procedimientos públicos y termina con código `0` solamente
-si pasan los casos de lectura, suma, transposición, multiplicación, sumas
-parciales, reinicio de acumuladores y conversión decimal:
+`TEST.BAT` builds the project and an assembly test harness. The harness calls the public procedures and exits with code `0` only when the input, addition, transposition, multiplication, partial-sum, accumulator-reset, and decimal-conversion cases pass.
 
 ```dos
 TEST.BAT
 ```
 
-Los datos y resultados esperados también están documentados en
-[`tests/TEST-VECTORS.md`](tests/TEST-VECTORS.md).
+The inputs and expected results are documented in [`tests/TEST-VECTORS.md`](tests/TEST-VECTORS.md).
 
-## Alcance
+## Scope
 
-Es un proyecto académico orientado a practicar ensamblador y arquitectura
-x86. No pretende reemplazar una biblioteca matemática ni acepta números
-negativos, fracciones o matrices de dimensiones variables.
+This academic project focuses on assembly language and x86 computer architecture. It is not a general-purpose matrix library and does not accept negative values, fractions, or variable matrix sizes.
 
-## Autor
+## Author
 
-**Angel Emiliano Escobar Hernandez**
-Proyecto académico de Estructura y Programación de Computadoras.
+**Angel Emiliano Escobar Hernández**
 
-Distribuido bajo la [licencia MIT](LICENSE).
+Computer Structure and Programming coursework.
+
+Distributed under the [MIT License](LICENSE).

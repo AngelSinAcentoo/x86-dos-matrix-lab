@@ -1,15 +1,12 @@
-# Ejercicios complementarios
+# Complementary exercises
 
-Estas prácticas muestran la progresión previa al proyecto principal. No son
-aplicaciones interactivas: los resultados se observan en memoria con un
-depurador como Turbo Debugger.
+These exercises show the work that preceded the main project. They are not interactive applications. Results are inspected directly in memory with a debugger such as Turbo Debugger.
 
-| Archivo | Objetivo | Resultado verificable |
-|---|---|---|
-| `TAREA10.ASM` | Alternar mayúsculas y minúsculas con XOR | `cad2 = "qUIerO cLasE"` |
-| `T11P2.ASM` | Sumatoria acumulada de productos | `Y = [0, 32, 83, 155]` |
-| `T12P1.ASM` | Operaciones sobre matrices 4×4 | Suma, transpuesta y sumas parciales en memoria |
-| `T12P2.ASM` | Sumar nueve matrices constantes | Los 16 elementos de `HILBERT` valen 45 |
+| File | Goal | Verifiable result |
+| --- | --- | --- |
+| `TAREA10.ASM` | Toggle uppercase and lowercase characters with XOR | `cad2 = "qUIerO cLasE"` |
+| `T11P2.ASM` | Compute a cumulative sum of products | `Y = [0, 32, 83, 155]` |
+| `T12P1.ASM` | Perform operations on 4x4 matrices | Addition, transposition, and partial sums in memory |
+| `T12P2.ASM` | Add nine constant matrices | All 16 elements of `HILBERT` equal 45 |
 
-El ejercicio original de inversa 2×2 no se publica: usaba división entera y no
-representaba correctamente resultados fraccionarios.
+The original 2x2 inverse exercise is not published because it used integer division and did not represent fractional results correctly.

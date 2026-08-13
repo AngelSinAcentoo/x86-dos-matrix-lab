@@ -1,15 +1,15 @@
-# Casos de prueba
+# Test vectors
 
-Todos los datos se ingresan por renglones.
+All values are entered row by row.
 
-## A. Suma
+## A. Addition
 
 ```text
 M1 = 1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6
 M2 = 9,8,7,6,5,4,3,2,1,0,9,8,7,6,5,4
 ```
 
-Resultado:
+Expected result:
 
 ```text
 10 10 10 10
@@ -18,15 +18,15 @@ Resultado:
 10 10 10 10
 ```
 
-## B. Transpuesta
+## B. Transposition
 
-Entrada:
+Input:
 
 ```text
 1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6
 ```
 
-Resultado:
+Expected result:
 
 ```text
 01 05 09 03
@@ -35,38 +35,38 @@ Resultado:
 04 08 02 06
 ```
 
-## C. Multiplicación
+## C. Multiplication
 
-Usar la matriz identidad como `M1`:
+Use the identity matrix as `M1`:
 
 ```text
 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1
 ```
 
-Y como `M2`:
+Use this matrix as `M2`:
 
 ```text
 1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6
 ```
 
-El resultado debe coincidir con `M2`, impreso con tres dígitos.
+The result must match `M2`, printed with three digits per element.
 
-## D–F. Sumas
+## D through F. Sums
 
-Para la matriz:
+For this matrix:
 
 ```text
 1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6
 ```
 
-- diagonal principal: `14`;
-- suma total: `066`;
-- columnas: `18,12,16,20`;
-- renglones: `10,26,12,18`.
+- Main diagonal: `14`
+- Total: `066`
+- Columns: `18,12,16,20`
+- Rows: `10,26,12,18`
 
-## Flujo
+## Interaction flow
 
-- `Esc` desde el menú termina el programa.
-- `Esc` desde una captura o pantalla de resultados regresa al menú.
-- `Enter` después de un resultado muestra la pregunta para repetir.
-- La respuesta acepta `S`/`s` y `N`/`n`.
+- `Esc` from the menu exits the program.
+- `Esc` from an input or result screen returns to the menu.
+- `Enter` after a result opens the repeat prompt.
+- The repeat prompt accepts `S`/`s` for yes and `N`/`n` for no.

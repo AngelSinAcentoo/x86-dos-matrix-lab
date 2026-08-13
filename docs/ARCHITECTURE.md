@@ -1,18 +1,13 @@
-# Arquitectura
+# Architecture
 
-La aplicación se divide en tres módulos:
+The application is divided into three modules:
 
-1. `PROYECTO.ASM` contiene datos, menú, captura de matrices y presentación.
-2. `MACROS.INC` conserva registros con `pusha/popa`, coloca argumentos en la
-   pila y llama a procedimientos.
-3. `PROCED.ASM` implementa algoritmos, conversión decimal y salida tabular.
+1. `PROYECTO.ASM` contains the data, menu, matrix input, and presentation logic.
+2. `MACROS.INC` preserves registers with `pusha/popa`, places arguments on the stack, and calls procedures.
+3. `PROCED.ASM` implements the algorithms, decimal conversion, and tabular output.
 
-## Flujo de datos
+## Data flow
 
-Las cadenas capturadas por DOS `21h/0Ah` se convierten a matrices de 16 bytes.
-Las operaciones de suma, transposición y agregación producen bytes. La
-multiplicación produce 16 palabras para evitar desbordamiento y se convierte
-a grupos de tres caracteres antes de imprimirse.
+Strings captured through DOS service `21h/0Ah` are converted into 16-byte matrices. Addition, transposition, and aggregation operations produce byte values. Multiplication produces 16 words to avoid overflow and converts them into groups of three characters before printing.
 
-Los procedimientos retiran sus argumentos con `ret n`; las macros restauran
-los registros del llamador después de cada operación.
+Procedures remove their arguments with `ret n`. The macros restore the caller's registers after every operation.
